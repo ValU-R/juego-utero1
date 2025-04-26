@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados del Juego - Útero</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    table { margin: 20px auto; border-collapse: collapse; width: 80%; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 10px; text-align: center; }
+    th { background-color: #f8bbd0; }
+  </style>
+</head>
+<body>
+  <h1>Resultados del Juego</h1>
+  <p>Vea los puntajes de todos los jugadores conectados.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID del Jugador</th>
+        <th>Puntaje</th>
+      </tr>
+    </thead>
+    <tbody id="tablaResultados"></tbody>
+  </table>
+
+  <script>
+    const socket = io();
+
+    // Cuando un jugador se conecta, agregarlo a la tabla
+    socket.on('actualizarResultados', (jugadores) => {
+      const tablaResultados = document.getElementById('tablaResultados');
+      tablaResultados.innerHTML = ''; // Limpiar la tabla antes de actualizarla
+
+      // Recorrer todos los jugadores y mostrar sus puntajes
+      jugadores.forEach((jugador) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${jugador.id}</td><td>${jugador.score}</td>`;
+        tablaResultados.appendChild(row);
+      });
+    });
+  </script>
+</body>
+</html>

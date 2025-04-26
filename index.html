@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Interactivo - Útero</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    button { margin: 10px; padding: 10px 20px; background-color: #f8bbd0; border: none; cursor: pointer; }
+    button:hover { background-color: #f06292; }
+  </style>
+</head>
+<body>
+  <h1>Juego Interactivo - Responde las preguntas del útero</h1>
+  <p id="mensaje">Esperando tu respuesta...</p>
+  <button id="respuestaCorrecta">Respuesta Correcta</button>
+  <button id="respuestaIncorrecta">Respuesta Incorrecta</button>
+
+  <p>Puntaje: <span id="puntaje">0</span></p>
+  <p>Nivel: <span id="nivel">1</span></p>
+
+  <script>
+    const socket = io();
+    let nivel = 1;
+
+    // Cuando un jugador se conecta
+    socket.on('welcome', (message) => {
+      document.getElementById('mensaje').innerText = message;
+    });
+
+    // Actualizar puntaje en tiempo real
+    socket.on('puntaje', (puntaje) => {
+      document.getElementById('puntaje').innerText = puntaje;
+    });
+
+    // Enviar respuesta correcta
+    document.getElementById('respuestaCorrecta').addEventListener('click', () => {
+      const puntos = nivel * 10; // Incrementar puntos dependiendo del nivel
+      socket.emit('respuesta', { puntos: puntos });
+      nivel++;
+      document.getElementById('nivel').innerText = nivel;
+    });
+
+    // Enviar respuesta incorrecta
+    document.getElementById('respuestaIncorrecta').addEventListener('click', () => {
+      socket.emit('respuesta', { puntos: 0 });
+    });
+  </script>
+</body>
+</html>

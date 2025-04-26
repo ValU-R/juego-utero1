@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivel 2 - Fisiología del Útero</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef7f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    .question {
+      background-color: #ffffff;
+      border: 2px solid #81c784;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      max-width: 600px;
+    }
+    .options button {
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #c8e6c9;
+      cursor: pointer;
+    }
+    .options button:hover {
+      background-color: #a5d6a7;
+    }
+    .correct {
+      background-color: #81c784 !important;
+      color: white;
+    }
+    .incorrect {
+      background-color: #e57373 !important;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Explora el Útero - Nivel 2: Fisiología</h1>
+  <p>Selecciona la opción correcta sobre la función fisiológica del útero.</p>
+
+  <div class="question" id="question1">
+    <p><strong>1. ¿Cuál es la función principal del endometrio durante el ciclo menstrual?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Prepararse para recibir un embrión</button>
+      <button onclick="checkAnswer(this, false)">Producir hormonas sexuales</button>
+      <button onclick="checkAnswer(this, false)">Liberar óvulos</button>
+    </div>
+  </div>
+
+  <div class="question" id="question2">
+    <p><strong>2. ¿Qué ocurre en el miometrio durante el parto?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Se producen contracciones musculares</button>
+      <button onclick="checkAnswer(this, false)">Se rompe el saco amniótico</button>
+      <button onclick="checkAnswer(this, false)">Se dilata el endometrio</button>
+    </div>
+  </div>
+
+  <div class="question" id="question3">
+    <p><strong>3. ¿Cuál es el papel del cérvix durante el embarazo?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Mantener cerrado el útero hasta el parto</button>
+      <button onclick="checkAnswer(this, false)">Eliminar células muertas</button>
+      <button onclick="checkAnswer(this, false)">Liberar progesterona</button>
+    </div>
+  </div>
+
+  <div class="question" id="question4">
+    <p><strong>4. ¿Qué hormona estimula el engrosamiento del endometrio?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Estrógeno</button>
+      <button onclick="checkAnswer(this, false)">Testosterona</button>
+      <button onclick="checkAnswer(this, false)">Adrenalina</button>
+    </div>
+  </div>
+
+  <div class="question" id="question5">
+    <p><strong>5. ¿Qué estructura produce las contracciones necesarias para la expulsión del bebé?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Miometrio</button>
+      <button onclick="checkAnswer(this, false)">Endometrio</button>
+      <button onclick="checkAnswer(this, false)">Ovario</button>
+    </div>
+  </div>
+
+  <div class="question" id="question6">
+    <p><strong>6. ¿Qué hormona es clave para mantener el embarazo en sus primeras etapas?</strong></p>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Progesterona</button>
+      <button onclick="checkAnswer(this, false)">Prolactina</button>
+      <button onclick="checkAnswer(this, false)">Insulina</button>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('incorrect');
+      }
+      // Deshabilitar todos los botones de la misma pregunta
+      const parent = button.parentElement;
+      const buttons = parent.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+  </script>
+</body>
+</html>

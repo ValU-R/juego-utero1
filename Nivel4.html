@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivel 4 - Casos Clínicos del Útero</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3e5f5;
+      padding: 20px;
+      text-align: center;
+    }
+    .case {
+      background-color: #ffffff;
+      border: 2px solid #ce93d8;
+      border-radius: 10px;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #e1bee7;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ba68c8;
+    }
+    .correct {
+      background-color: #66bb6a !important;
+      color: white;
+    }
+    .incorrect {
+      background-color: #ef5350 !important;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nivel 4 - Casos Clínicos del Útero</h1>
+  <p>Lee cada caso y elige la respuesta más adecuada.</p>
+
+  <div class="case">
+    <p><strong>Caso 1:</strong> Una paciente de 35 años presenta menstruaciones muy abundantes y dolorosas. En la ecografía se observan masas redondeadas en el útero.</p>
+    <p><strong>¿Cuál es el diagnóstico más probable?</strong></p>
+    <button onclick="checkAnswer(this, false)">Endometriosis</button>
+    <button onclick="checkAnswer(this, true)">Miomas uterinos</button>
+    <button onclick="checkAnswer(this, false)">Cáncer cervical</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 2:</strong> Una mujer joven presenta dolor pélvico crónico y dificultad para quedar embarazada. En la laparoscopia se detecta tejido endometrial fuera del útero.</p>
+    <p><strong>¿Qué enfermedad presenta?</strong></p>
+    <button onclick="checkAnswer(this, false)">Pólipos endometriales</button>
+    <button onclick="checkAnswer(this, true)">Endometriosis</button>
+    <button onclick="checkAnswer(this, false)">Vaginitis</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 3:</strong> Una paciente acude a consulta por sangrado vaginal fuera del período menstrual. No tiene dolor, pero su última citología fue anormal.</p>
+    <p><strong>¿Qué sospecha diagnóstica es más probable?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cáncer de cuello uterino</button>
+    <button onclick="checkAnswer(this, false)">Cistitis</button>
+    <button onclick="checkAnswer(this, false)">Infección renal</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 4:</strong> ¿Cuál de estas opciones ayuda a prevenir el cáncer de cuello uterino?</p>
+    <button onclick="checkAnswer(this, true)">Vacunación contra el VPH</button>
+    <button onclick="checkAnswer(this, false)">Uso de analgésicos</button>
+    <button onclick="checkAnswer(this, false)">Evitar el ejercicio físico</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 5:</strong> Una mujer posmenopáusica presenta sangrado vaginal inesperado. ¿Cuál es la acción médica más adecuada?</p>
+    <button onclick="checkAnswer(this, false)">Esperar y observar</button>
+    <button onclick="checkAnswer(this, true)">Realizar una biopsia endometrial</button>
+    <button onclick="checkAnswer(this, false)">Dar tratamiento hormonal inmediato</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 6:</strong> Una mujer con diagnóstico de endometriosis pregunta por una posible consecuencia a largo plazo. ¿Cuál es una complicación conocida?</p>
+    <button onclick="checkAnswer(this, false)">Hipertensión</button>
+    <button onclick="checkAnswer(this, true)">Infertilidad</button>
+    <button onclick="checkAnswer(this, false)">Problemas digestivos</button>
+  </div>
+
+  <div class="case">
+    <p><strong>Caso 7:</strong> Una paciente con antecedentes de VPH persistente debe seguir un control frecuente. ¿Qué examen se recomienda para el seguimiento?</p>
+    <button onclick="checkAnswer(this, false)">Hemograma</button>
+    <button onclick="checkAnswer(this, true)">Colposcopia</button>
+    <button onclick="checkAnswer(this, false)">Ecografía pélvica</button>
+  </div>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('incorrect');
+      }
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+  </script>
+</body>
+</html>
